@@ -35,7 +35,9 @@ def main(schema_source, table_name):
   # csv_path = f'/opt/airflow/folder_project/csv_files/{csv_name}' 
   extract_status = extract_dq(schema_source, table_name, csv_path)
   if extract_status:
-    count_rows_exported = count_source(table_name, schema_source)
+    with open(csv_path, 'r') as f:
+      count_rows_exported = len(f.readlines()) - 1
+    # count_rows_exported = count_source(table_name, schema_source)
     print(count_rows_exported)    
     schema_destination = dw_schema_name(table_name)
     split_files_path = split_csv(csv_name, table_name, count_rows_exported)
