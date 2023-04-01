@@ -7,9 +7,9 @@ Necessário criar um arquivo '.env' na raiz do projeto e colocar as credenciais 
 # Como funciona:
 - Vc informa um schema e uma tabela que quer quer copiar para o Redshift.
 - O script faz o export dessa tabela e salva num csv, dentro da pasta 'csv_files'.
-- Conta a qtd de registros exportados e salva.
+- Faz contagem de registros exportados e salva.
 - Split o csv em arquivos de 50 ou 100mil linhas (vc pode alterar isso para o que achar melhor.)
-- cria uma tabela temporaria os vamos inserir os dados desse Export.
+- Cria uma tabela temporaria onde vamos inserir os dados desse Export.
 - Itera sobre todos os arquivos da pasta 'csv_files/split_files' e arquivo por arquivo els faz:
   * Upload do arquivo para um Bucket S3.
     - Se o UPLOAD pro S3 foi sucess:
