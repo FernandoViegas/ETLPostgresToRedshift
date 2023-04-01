@@ -97,7 +97,7 @@ def count_source(table_name, schema_source):
     print(e)
 
 def dw_schema_name(table_name):
-  dict_schema_redshift = {'tabela_name1': 'source_redshift1',
+  dict_schema_redshift = {'platform_extra_information': 'platforms',
                     'tabela_name2': 'source_redshift2',
                     'tabela_name3': 'source_redshift3',
                     'tabela_name4': 'source_redshift4',
@@ -136,6 +136,7 @@ def create_cmd_sql(table_name, schema_destination, csv_path, csv_name):
   len_columns = len(columns)
   i = 0
   force_varchar_max = {'table_name1': ['columnA', 'columnB', 'columnC'],
+                      'platform_extra_information': ['niche', 'other_profiles', 'audience_size'],
                       'table_name2': ['columnZ'],
                       'table_name3': ['columnX'],
                       'table_name4': ['columnE', 'columnF', 'columnG']
@@ -294,4 +295,4 @@ def replace_temp_table(schema_destination, table_name, count_rows_exported):
     return False
     # inserir alguma notificação via Slack !!!
 
-main(schema_source='schema', table_name='table_name')
+main(schema_source='data_quality', table_name='platform_extra_information')
